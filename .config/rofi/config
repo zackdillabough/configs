@@ -1,0 +1,11 @@
+# Dark theme.
+# rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+
+# Light theme.
+# rofi.theme: ~/.cache/wal/colors-rofi-light.rasi
+
+# Sidebar
+# rofi.theme: sidebar
+
+# Topbar
+rofi.theme: dmenu
