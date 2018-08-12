@@ -8,6 +8,9 @@ URxvt*externalBorder:                 	0
 URxvt*internalBorder:                 	0
 URxvt*borderColor:                    	#000000
 
+!! Fixes image-preview transparency issue
+URxvt.depth: 24
+
 !! Extensions
 URxvt*perl-ext-common:			default,clipboard,url-select,keyboard-select,resize-font,matcher
 	
