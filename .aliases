@@ -1,9 +1,9 @@
 # Universal Shell Aliases
 
-# displays current xresources scheme
-alias colortest='/home/zack/.scripts/color-scripts/color-scripts/colortest'
-alias pac-color='/home/zack/.scripts/color-scripts/color-scripts/pacman'
-alias pipes='/home/zack/.scripts/color-scripts/color-scripts/pipes2'
+# displays current xresources colorscheme
+alias colortest='~/.scripts/color-scripts/color-scripts/colortest'
+alias pac-color='~/.scripts/color-scripts/color-scripts/pacman'
+alias pipes='~/.scripts/color-scripts/color-scripts/pipes2'
 
 # git alias for setup/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
