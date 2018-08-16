@@ -98,4 +98,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Append Anaconda, as not to override system python
 export PATH="/home/zack/anaconda3/bin:$PATH"
-
