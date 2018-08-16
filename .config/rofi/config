@@ -7,5 +7,8 @@
 # Sidebar
 # rofi.theme: sidebar
 
-# Topbar
-rofi.theme: dmenu
+# dmenu
+# rofi.theme: dmenu
+
+# dmenu w/ pywal
+rofi.theme: ~/.config/rofi/dmenu_pywal.rasi
