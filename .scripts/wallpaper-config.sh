@@ -1,6 +1,5 @@
 #!/bin/zsh
-
-bgpath="home/zack/Pictures/Backgrounds/"
+# this script takes in a bg-dir name and generates a custom colorscheme + sets the current 'wal' image as the display bg (with directory-specific settings)
 
 if [[ $1 == "" ]]; then
 	bgfldr="/home/zack/Pictures/Backgrounds/Circos"
@@ -8,15 +7,13 @@ else
 	bgfldr="/home/zack/Pictures/Backgrounds/$1"
 fi
 
-# fin wallpaper var append to bg path
-
 wal -b 000000 -n -i $bgfldr
-#wal -b 000000 -i $bgfldr
-#source /home/zack/.cache/wal/colors.sh
 
-if [[ $1 == 'Space' ]]; then
+for category in 'Space' 'SpaceTravel'; do
+if [[ $1 == "$category" ]]; then	
 	feh --bg-scale "$(< "${HOME}/.cache/wal/wal")"
+	break
 else
 	feh --bg-center "$(< "${HOME}/.cache/wal/wal")"
 fi
-
+done
