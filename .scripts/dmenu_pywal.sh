@@ -1,38 +1,9 @@
-# reference from ~/.cache/wal/colors-rofi-dark.rasi
-example='
-* {
-    active-background: #51524D; #$color2
-    active-foreground: @foreground;
-    normal-background: @background;
-    normal-foreground: @foreground;
-    urgent-background: #3B4347; #$color9
-    urgent-foreground: @foreground;
+#!/bin/zsh
 
-    alternate-active-background: @background;
-    alternate-active-foreground: @foreground;
-    alternate-normal-background: @background;
-    alternate-normal-foreground: @foreground;
-    alternate-urgent-background: @background;
-    alternate-urgent-foreground: @foreground;
-
-    selected-active-background: #3B4347;
-    selected-active-foreground: @foreground;
-    selected-normal-background: #51524D;
-    selected-normal-foreground: @foreground;
-    selected-urgent-background: #6C5B43;
-    selected-urgent-foreground: @foreground;
-
-    background-color: @background;
-    background: #000000;
-    foreground: #c1b5a7;
-    border-color: @background;
-    spacing: 2;
-}
-'
+wal -b 000000 -n -i $wallpaper
 
 source ~/.cache/wal/colors.sh
 
-echo $color7
 rm ~/.config/rofi/dmenu_pywal.rasi
 
 echo "* {

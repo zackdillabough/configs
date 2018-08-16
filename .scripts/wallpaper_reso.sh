@@ -43,4 +43,4 @@ fi
 
 ### rofi-pywal execute ###
 
-exec ~/.scripts/dmenu_pywal.sh
+#exec ~/.scripts/dmenu_pywal.sh

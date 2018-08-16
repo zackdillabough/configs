@@ -60,13 +60,10 @@ exec_always --no-startup-id nm-applet
 exec --no-startup-id compton --xrender-sync-fence
 
 # Wallpaper / Terminal layout daemon
-exec_always --no-startup-id ~/.scripts/wallpaper_reso.sh Nature
+exec_always --no-startup-id ~/.scripts/wallpaper_reso.sh 
 
 # Rofi / Pywal (called from wallpaper_reso.sh for now)
-# exec_always --no-startup-id ~/.scripts/dmenu_pywal.sh
-# Note:
-# for some reason, it seems like $color7 would always remain one refresh/colorscheme behind
-
+exec_always --no-startup-id ~/.scripts/dmenu_pywal.sh
 
 
 ##########################
