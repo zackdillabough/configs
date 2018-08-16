@@ -60,8 +60,14 @@ exec_always --no-startup-id nm-applet
 exec --no-startup-id compton --xrender-sync-fence
 
 # Wallpaper / Terminal layout daemon
-#exec_always --no-startup-id wal -b 000000 -i /home/zack/Pictures/Backgrounds/Circos
-exec_always --no-startup-id /home/zack/.scripts/wallpaper-config.sh /home/zack/Pictures/Backgrounds/Circos
+exec_always --no-startup-id ~/.scripts/wallpaper_reso.sh Nature
+
+# Rofi / Pywal (called from wallpaper_reso.sh for now)
+# exec_always --no-startup-id ~/.scripts/dmenu_pywal.sh
+# Note:
+# for some reason, it seems like $color7 would always remain one refresh/colorscheme behind
+
+
 
 ##########################
 ###---Media Controls---###
@@ -226,3 +232,4 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #      urgent_workspace    $urgent-bg-color    $urgent-bg-color    $text-color
 #    }
 #}
+
