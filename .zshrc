@@ -4,6 +4,8 @@
 # source custom aliases
   source $HOME/.aliases
 
+  source ~/.cache/wal/colors.sh
+
 # Path to your oh-my-zsh installation.
   export ZSH=/home/zack/.oh-my-zsh
 #  export VISUAL='vim'
