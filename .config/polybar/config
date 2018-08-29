@@ -1,12 +1,14 @@
-[bar/top]
-; monitor = eDP-1
+; for use with double monitors
+
+[bar/topleft]
+monitor = HDMI-1
 width = 100%
 height = 34
 
 background = #00000000
 foreground = #ccffffff
 
-line-color = ${bar/bottom.background}
+line-color = ${bar/bottomright.background}
 line-size = 16
 
 spacing = 2
@@ -19,18 +21,41 @@ font-2 = Termsynu:size=8:antialias=false;-2
 font-3 = FontAwesome:size=10;0
 
 modules-left = powermenu mpd
+modules-right = 
+
+[bar/topright]
+monitor = DP-1-8
+width = 100%
+height = 34
+
+background = #00000000
+foreground = #ccffffff
+
+line-color = ${bar/bottomright.background}
+line-size = 16
+
+spacing = 2
+padding-right = 5
+module-margin = 4
+
+font-0 = NotoSans-Regular:size=8;-1
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8:antialias=false;-2
+font-3 = FontAwesome:size=10;0
+
+modules-left = 
 modules-right = volume battery date
 
-[bar/bottom]
-; monitor = eDP-1
+[bar/bottomleft]
+monitor = HDMI-1
 bottom = true
 width = 100%
 height = 27
 
-background = ${bar/top.background}
-foreground = ${bar/top.foreground}
+background = ${bar/topright.background}
+foreground = ${bar/topright.foreground}
 
-line-color = ${bar/top.background}
+line-color = ${bar/topright.background}
 line-size = 2
 
 spacing = 3
@@ -46,6 +71,33 @@ font-4 = MaterialIcons:size=10;-1
 font-5 = Termsynu:size=8:antialias=false;0
 
 modules-left = i3
+modules-right = 
+
+[bar/bottomright]
+monitor = DP-1-8
+bottom = true
+width = 100%
+height = 27
+
+background = ${bar/topright.background}
+foreground = ${bar/topright.foreground}
+
+line-color = ${bar/topright.background}
+line-size = 2
+
+spacing = 3
+padding-right = 4
+module-margin-left = 0
+module-margin-right = 6
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = unifont:size=6;-3
+font-2 = FontAwesome:size=8;-2
+font-3 = NotoSans-Regular:size=8;-1
+font-4 = MaterialIcons:size=10;-1
+font-5 = Termsynu:size=8:antialias=false;0
+
+modules-left = 
 modules-right = cpu memory
 
 [module/backlight]
@@ -260,7 +312,7 @@ ramp-signal-4 = 
 animation-packetloss-0 = 
 animation-packetloss-0-foreground = #ffa64c
 animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-1-foreground = ${bar/topright.foreground}
 animation-packetloss-framerate = 500
 
 [module/wired-network]
