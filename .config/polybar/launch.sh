@@ -8,7 +8,9 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
 #polybar example
-polybar top &
-polybar bottom &
+polybar topleft &
+polybar topright &
+polybar bottomleft &
+polybar bottomright &
 
 echo "Bars launched..."
