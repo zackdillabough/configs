@@ -40,7 +40,3 @@ else
 		feh --bg-max "$(< "$currentimg")"
 	fi
 fi
-
-### rofi-pywal execute ###
-
-#exec ~/.scripts/dmenu_pywal.sh
