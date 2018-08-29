@@ -39,7 +39,7 @@ Plug 'dylanaraps/wal'
 call plug#end()
 
 " Theme selection ("tender" is a pretty good one)
-:colorscheme wal
+colorscheme wal
 
 " Automatically switch to 'relative numbering' when in 'insert mode'
 " absolute numbering if else
