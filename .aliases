@@ -9,3 +9,5 @@ alias pipes='~/.scripts/color-scripts/color-scripts/pipes2'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias qb='exec /usr/bin/qutebrowser'
+
+alias term='exec urxvt -fg white -bg black'
