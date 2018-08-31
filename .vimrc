@@ -56,3 +56,10 @@ map <C-n> :NERDTreeToggle<CR>
 
 " set tab size to 4
 set tabstop=4
+
+" enable yank-to-clipboard
+set clipboard=unnamedplus
+
+" keybinding to link default yank/paste key to system clipboard buffer.
+nnoremap y "+y
+nnoremap p "+p
