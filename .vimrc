@@ -63,3 +63,4 @@ set clipboard=unnamedplus
 " keybinding to link default yank/paste key to system clipboard buffer.
 nnoremap y "+y
 nnoremap p "+p
+
