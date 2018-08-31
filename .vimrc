@@ -17,13 +17,6 @@ runtime! archlinux.vim
 " do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
 
-" install vimplug (if needed)
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 " Call plugins via vim-plug here
 " you can either use the github shorthand (as seen w/ 'rafi/awesome-v...'
 " or you can write the entire url
@@ -39,7 +32,7 @@ Plug 'dylanaraps/wal'
 call plug#end()
 
 " Theme selection ("tender" is a pretty good one)
-colorscheme wal
+:colorscheme wal
 
 " Automatically switch to 'relative numbering' when in 'insert mode'
 " absolute numbering if else
@@ -63,3 +56,11 @@ map <C-n> :NERDTreeToggle<CR>
 
 " set tab size to 4
 set tabstop=4
+
+" enable yank-to-clipboard
+set clipboard=unnamedplus
+
+" keybinding to link default yank/paste key to system clipboard buffer.
+nnoremap y "+y
+nnoremap p "+p
+
