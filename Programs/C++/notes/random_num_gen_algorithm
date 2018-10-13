@@ -1,0 +1,5 @@
+##generates a random number from min to max
+
+min = a; max = b
+
+return min + rand() % (max - min + 1)
