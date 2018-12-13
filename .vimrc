@@ -33,7 +33,7 @@ call plug#end()
 
 " Theme selection ("tender" is a pretty good one)
 :colorscheme wal
-
+" :colorscheme tender
 " Automatically switch to 'relative numbering' when in 'insert mode'
 " absolute numbering if else
 
@@ -56,3 +56,6 @@ map <C-n> :NERDTreeToggle<CR>
 
 " set tab size to 4
 set tabstop=4
+
+" Use clipboard as default register
+set clipboard=unnamedplus
