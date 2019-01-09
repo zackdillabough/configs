@@ -34,11 +34,10 @@ call plug#end()
 " Theme selection ("tender" is a pretty good one)
 :colorscheme wal
 " :colorscheme tender
+
 " Automatically switch to 'relative numbering' when in 'insert mode'
 " absolute numbering if else
-
 :set number relativenumber
-
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
@@ -54,8 +53,20 @@ nnoremap <C-H> <C-W><C-H>
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" set tab size to 4
+" set tab size to 4 + convert tabs to spaces
 set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" use indentation of prev line
+set autoindent
+
+" use intelligent indentation for C
+set smartindent
 
 " Use clipboard as default register
 set clipboard=unnamedplus
+
+" keybinding to link default yank/paste key to system clipboard buffer.
+nnoremap y "+y
+nnoremap p "+p
