@@ -13,7 +13,7 @@ echo "* {
     font:            \"Times New Roman 12\";
 }
 
-configuration {
+#configuration {
 }
 
 #window {
