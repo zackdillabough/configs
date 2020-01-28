@@ -6,7 +6,7 @@ URxvt*background:                     	[85]#000000
 URxvt*font:                           	xft:Inconsolata:pixelsize=18
 URxvt*externalBorder:                 	0
 URxvt*internalBorder:                 	0
-URxvt*borderColor:                    	#000000
+URxvt*borderColor:                    	[85]#000000
 
 !! Fixes image-preview transparency issue
 URxvt.depth: 24
