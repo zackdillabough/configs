@@ -4,7 +4,7 @@
 alias colortest='~/.scripts/color-scripts/color-scripts/colortest'
 alias pac-color='~/.scripts/color-scripts/color-scripts/pacman'
 alias pipes='~/.scripts/color-scripts/color-scripts/pipes2'
-
+alias vim='nvim'
 # git alias for setup/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
