@@ -9,10 +9,16 @@ font pango:System San Francisco Display 10
 exec_always xmodmap -e "clear lock" #disable caps lock switch
 exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
+# increase key repeat
+exec_always xset r rate 175 40
+
+# autostart dockd (deals w/ dual monitor setup when docked)
+exec --no-startup-id dockd --daemon
+
 #--Define variables--#
 
 # Set 'alt' key as "mod"
-set $mod Mod1
+set $mod Mod4
 
 set $workspace1 "1"
 set $workspace2 "2"
@@ -39,11 +45,18 @@ set $workspace10 "10"
 #--I3GAPS ENABLING-CONFIGURATION(S)--#
 
 # Disable window titlebar (for i3 gaps)
-for_window [class="^.*"] border pixel 0
-hide_edge_borders both
+#for_window [class="^.*"] border pixel 1
+
+# # class                 border  bg      text    indicator child_border
+client.focused            #5F676A #81A1C1 #3B4252 #88C0D0   #4C566A
+client.focused_inactive   #000000 #000000 #ffffff #000000   #000000
+client.unfocused          #000000 #000000 #ffffff #000000   #000000
+client.urgent             #2f343a #900000 #ffffff #900000   #900000
+client.placeholder        #000000 #0c0c0c #ffffff #000000   #0c0c0c
+hide_edge_borders smart
 
 # set global gap size
-gaps inner 8
+gaps inner 5
 gaps outer 0 
 
 # Enable smart gaps
@@ -60,7 +73,7 @@ exec_always --no-startup-id nm-applet
 exec --no-startup-id compton --xrender-sync-fence
 
 # Wallpaper / Terminal layout daemon
-exec_always --no-startup-id ~/.scripts/wallpaper_reso.sh 
+exec_always --no-startup-id ~/.scripts/wallpaper_reso.sh Circos
 
 # Rofi / Pywal (called from wallpaper_reso.sh for now)
 exec_always --no-startup-id ~/.scripts/dmenu_pywal.sh
@@ -87,10 +100,10 @@ bindsym XF86MonBrightnessDown exec light -U 20 # decrease
 floating_modifier 	$mod
 
 # start a terminal
-bindsym $mod+Return 	exec urxvt
+bindsym $mod+Return exec urxvt
 
 # kill focused window
-bindsym $mod+q	kill
+bindsym $mod+q	    kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d 		exec rofi -show run
@@ -127,21 +140,21 @@ bindsym $mod+v 		split v
 bindsym $mod+f 	fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s 	layout stacking
-# bindsym $mod+w 	layout tabbed
-# bindsym $mod+e 	layout toggle split
+bindsym $mod+s 	layout stacking
+bindsym $mod+t 	layout tabbed
+bindsym $mod+e 	layout toggle split
+
+# focus the parent container
+bindsym $mod+p 	focus parent
+
+# focus the child container
+bindsym $mod+c  focus child
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space 	 focus mode_toggle
-
-# focus the parent container
-# bindsym $mod+a 	focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # switch workspace
 bindsym $mod+1 	workspace $workspace1
@@ -170,7 +183,7 @@ bindsym $mod+Shift+0 	move container to workspace $workspace10
 # reload the configuration file
 bindsym $mod+Shift+c 	reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart i3 in place (preserves your layout/session, can be used to update i3)
 bindsym $mod+Shift+r 	restart
 
 # exit i3 (logs you out of your X session)
@@ -222,11 +235,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #    position top
 #
 #    colors {
-#      background $bg-color
-#      #                   border              background          text
+#     background $bg-color
+#                 border              background          text
 #      focused_workspace   $bg-color           $bg-color           $text-color
 #      inactive_workspace  $inactive-bg-color  $inactive-bg-color  $inactive-text-color
 #      urgent_workspace    $urgent-bg-color    $urgent-bg-color    $text-color
 #    }
 #}
-
