@@ -1,25 +1,22 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# source custom aliases
-  source $HOME/.aliases
+export ZSH=/home/zack/.oh-my-zsh    # Path to your oh-my-zsh installation.
+export VISUAL='nvim'
 
-  source ~/.cache/wal/colors.sh
-
-# Path to your oh-my-zsh installation.
-  export ZSH=/home/zack/.oh-my-zsh
-#  export VISUAL='vim'
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="frisk"
+# ZSH_THEME="pmcgee"
+# ZSH_THEME="sunaku"
+# ZSH_THEME="josh"
+# ZSH_THEME="random"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME_RANDOM_CANDIDATES=( "frisk" "pmcgee" "sunaku" "josh" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -97,6 +94,21 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source $HOME/.aliases               # custom aliases
+source ~/.cache/wal/colors.sh       # custom colors generated from wal
+
+#fzf options
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse' 
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # Append Anaconda, as not to override system python
 export PATH="/home/zack/anaconda3/bin:$PATH"
+
+# Append ruby + gems
+export PATH="/home/zack/.gem/ruby/2.6.0/bin:$PATH"
+
+# Append vim-live-latex-preview
+export PATH="/home/zack/.vim/plugs/vim-live-latex-preview/bin:$PATH"
+

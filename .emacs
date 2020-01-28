@@ -52,6 +52,8 @@ There are two things you can do about this warning:
 
 ;; hide menu bar + toolbar + scrollbar opts
 (tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; init powerline theme for smart-mode-line
 (setq sml/theme 'powerline)
