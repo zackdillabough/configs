@@ -12,9 +12,13 @@ exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 # increase key repeat
 exec_always xset r rate 175 40
 
+# exec_always --no-startup-id xrandr --output LVDS1 --primary --mode 1600x900 --pos 0x0 --rotate normal --output VGA1 --auto --left-of LVDS1
+
 # autostart dockd (deals w/ dual monitor setup when docked)
 exec --no-startup-id dockd --daemon
 
+# enable fireshot systray icon
+exec_always --no-startup-id flameshot
 #--Define variables--#
 
 # Set 'alt' key as "mod"
