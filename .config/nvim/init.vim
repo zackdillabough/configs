@@ -9,10 +9,10 @@ Plug 'scrooloose/nerdtree'              " Filetree sidebar
 Plug 'dylanaraps/wal'                   " Uses wal functionality to generate vim colorschemes (colorscheme 'wal')
 Plug 'easymotion/vim-easymotion'        " Use double-leader + motion (or s for 'search') to jump around
 Plug 'ying17zi/vim-live-latex-preview'  " auto-compile/update latex to pdf
-
+Plug 'jiangmiao/auto-pairs'             " auto-closing parens,brackets,etc
+"Plug 'junegunn/fzf'                     " fuzzy search
 call plug#end()
 
-"-mappings--------------------------------------------------------------------"
 
 " Theme selection 
 " "wal" uses pywal - pretty nifty
@@ -30,6 +30,8 @@ call plug#end()
 " "happy_hacking" very similar to jetbrains
 
 color hybrid
+
+"-key mappings--------------------------------------------------------------------"
 
 " Define Leader key
 nnoremap <Space> <NOP>
@@ -64,6 +66,12 @@ vnoremap <Leader>c :call NERDComment(0,"toggle")<CR>
 " Toggle NERDTree
 map <Leader>n :NERDTreeToggle<CR>
 
+" Auto-expand
+"source ~/.vim/plugin/icr.vim
+"autocmd FileType c inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-r>=icr#ICR()\<CR>"
+"autocmd FileType cpp inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-r>=icr#ICR()\<CR>"
+"autocmd FileType java inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-r>=icr#ICR()\<CR>"
+
 "-settings--------------------------------------------------------------------"
 
 set tabstop=4               " set tab size to 4 + convert tabs to spaces
@@ -72,7 +80,8 @@ set expandtab
 set smarttab
 set autoindent              " use indentation of prev line
 set copyindent
-set scrolloff=999           " keeps cursor in middle of screen
+"set scrolloff=999           " keeps cursor in middle of screen
+set scrolloff=0          
 set wildmenu                " enhanced tab-completion for command mode
 set wildignorecase
 set wildmode=list:longest,full
