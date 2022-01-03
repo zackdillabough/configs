@@ -1,102 +1,114 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+xmodmap ~/.Xmodmap
 
-# source custom aliases
-  source $HOME/.aliases
+export GTK_IM_MODULE=xim
+export QT_IM_MODULE=xim
 
-  source ~/.cache/wal/colors.sh
+ALIASFILE=~/.aliases
+source $ALIASFILE
 
-# Path to your oh-my-zsh installation.
-  export ZSH=/home/zack/.oh-my-zsh
-#  export VISUAL='vim'
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="frisk"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+### End of Zinit's installer chunk
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+### themes
+# pure
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+# common
+#zinit light "jackharrisonsherlock/common"       # theme
+#    setopt prompt_subst
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+### options
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+bindkey -v  # enable vi-mode
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+### plugins
+# [ESC][ESC] prepends sudo to prev/current command
+zinit light "hcgraf/zsh-sudo"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# keeps last executed command on top
+zinit light "Valiev/almostontop"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+# recommends aliases if applicable
+zinit light "djui/alias-tips"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# for traversing upwards through directories
+zinit light "peterhurford/up.zsh"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+# notis for long processes
+#zinit light "MichaelAquilina/zsh-auto-notify"
 
-source $ZSH/oh-my-zsh.sh
+# fzf completion selection menu
+#       ctrl-space to select multiple options
+zinit light "Aloxaf/fzf-tab"
+    # disable sort when completing `git checkout`
+    zstyle ':completion:*:git-checkout:*' sort false
+    # set descriptions format to enable group support
+    zstyle ':completion:*:descriptions' format '[%d]'
+    # set list-colors to enable filename colorizing
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+    # preview directory's content with exa when completing cd
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+    # switch group using `,` and `.`
+    zstyle ':fzf-tab:*' switch-group ',' '.'
 
-# User configuration
+# zsh syntax highlighting
+zinit light "zdharma/fast-syntax-highlighting" 
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# auto suggestions
+zinit light "zsh-users/zsh-autosuggestions"     
+    bindkey '^ ' autosuggest-accept # Accept suggestion
+    bindkey '^j' autosuggest-execute  # Accept and execute suggestion
+    #bindkey 'M' autosuggest-execute  # Accept and execute suggestion (for use when you figure out how to map ctrl+enter to esc+M)
+    bindkey -M emacs "${terminfo[kcbt]}" reverse-menu-complete
+    bindkey -M viins "${terminfo[kcbt]}" reverse-menu-complete
+    bindkey -M vicmd "${terminfo[kcbt]}" reverse-menu-complete
+    zstyle ':completion:*' special-dirs true
+    zstyle ':completion:*' list-colors ''
+    zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+    autoload -U compinit && compinit
+    zmodload -i zsh/complist
+    #zstyle ':completion:*' menu select
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# fzf
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse' 
+export FZF_DEFAULT_COMMAND='fdfind --hidden'
+export FZF_CTRL_T_COMMAND='fdfind --hidden'
+export FZF_ALT_C_COMMAND='fdfind --type d --hidden --follow --exclude ".git"' 
+#export FZF_ALT_C_COMMAND='fdfind --type d --hidden --follow --exclude ".git" . "$1"'
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+    bindkey '^T' fzf-file-widget        # general fzf for files
+    bindkey '^F' fzf-cd-widget          # fzf for cd
+    bindkey '^R' fzf-history-widget     # fzf for history
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export BROWSER='/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe'
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Append Anaconda, as not to override system python
-export PATH="/home/zack/anaconda3/bin:$PATH"
+export PATH="/home/napkin/.yarn/bin:$PATH"
+export PATH="/home/napkin/.local/kitty.app/bin/:$PATH"
+export PATH="/home/napkin/.local/bin:$PATH"

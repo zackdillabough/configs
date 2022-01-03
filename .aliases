@@ -1,13 +1,22 @@
 # Universal Shell Aliases
 
 # displays current xresources colorscheme
-alias colortest='~/.scripts/color-scripts/color-scripts/colortest'
-alias pac-color='~/.scripts/color-scripts/color-scripts/pacman'
-alias pipes='~/.scripts/color-scripts/color-scripts/pipes2'
+#alias colortest='~/.scripts/color-scripts/color-scripts/colortest'
+#alias pac-color='~/.scripts/color-scripts/color-scripts/pacman'
+#alias pipes='~/.scripts/color-scripts/color-scripts/pipes2'
+# alias vim='nvim'
+alias vim='~/bin/nvim-linux64/bin/nvim'
 
 # git alias for setup/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-alias qb='exec /usr/bin/qutebrowser'
+#alias qb='exec /usr/bin/qutebrowser'
+alias ssh='TERM=xterm-256color ssh'
+alias ls='exa --long  --git --classify --group-directories-first --color-scale --icons'
+alias ontop='almostontop_toggle'
 
-alias term='exec urxvt -fg white -bg black'
+# vim luls
+alias :q='exit'
+alias :e='$EDITOR'
+
+#alias kitty2='/home/napkin/.local/kitty.app/bin/kitty -o allow_remote_control=yes --listen-on=unix:@mykitty2'
