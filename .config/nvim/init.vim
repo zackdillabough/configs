@@ -40,8 +40,8 @@ call plug#end()
 " "happy_hacking" very similar to jetbrains
 
 "colorscheme tender
-colorscheme onedark
-"set termguicolors
+"colorscheme onedark
+set termguicolors
 
 let g:terminal_color_1 = '#00ff00'
 let g:terminal_color_2 = '#00ff00'
@@ -138,8 +138,8 @@ nnoremap <leader>s :let &scrolloff=999-&scrolloff<CR>
 "\<C-r>=icr#ICR()\<CR>"
 
 "enable crosshairs
-"set cursorline              " enable crosshairs
-"set cursorcolumn            " enable crosshairs
+set cursorline              " enable crosshairs
+set cursorcolumn            " enable crosshairs
 "highlight CursorColumn ctermbg=Black cterm=bold gui=bold
 "highlight CursorLine ctermbg=Black cterm=bold gui=bold
 " disable in current window with:

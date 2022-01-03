@@ -35,17 +35,6 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10"
 
-##set $workspace1 "1 "
-##set $workspace2 "2 "
-##set $workspace3 "3 "
-##set $workspace4 "4 "
-##set $workspace5 "5 "
-##set $workspace6 "6 "
-##set $workspace7 "7 "
-##set $workspace8 "8 "
-##set $workspace9 "9 "
-##set $workspace10 "10 "
-
 #--I3GAPS ENABLING-CONFIGURATION(S)--#
 
 # Disable window titlebar (for i3 gaps)
@@ -104,7 +93,8 @@ bindsym XF86MonBrightnessDown exec light -U 20 # decrease
 floating_modifier 	$mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec kitty
+#bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+q	    kill

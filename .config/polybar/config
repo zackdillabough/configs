@@ -10,13 +10,12 @@ tray-position = right
 tray-scale = 0.9
 tray-padding = 0
 tray-transparent = true
-true tray-background = #0063ff
 
 background = #00000000
 foreground = #ccffffff
 
 line-color = ${bar/bottom.background}
-line-size = 16
+line-size = 2 ;bar thickness
 
 spacing = 0
 padding-right = 1
@@ -28,8 +27,7 @@ font-2 = Termsynu:size=8:antialias=false;-2
 font-3 = FontAwesome:size=10;0
 
 modules-left = network powermenu mpd 
-modules-right = volume battery date 
-; modules-right = volume battery nm-launcher date 
+modules-right = pulseaudio battery date 
 
 [bar/bottom]
 ; monitor = eDP-1
@@ -55,8 +53,17 @@ font-3 = NotoSans-Regular:size=8;-1
 font-4 = MaterialIcons:size=10;-1
 font-5 = Termsynu:size=8:antialias=false;0
 
-modules-left = i3
+modules-left = i3 spotify 
 modules-right = cpu memory
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python ~/.config/polybar/addons/spotify_status.py -f '{play_pause} {artist}: {song}'
+format-underline = #1db954
+;format-padding = 2
 
 [module/nm-launcher]
 type = custom/text
@@ -167,6 +174,49 @@ bar-used-fill-font = 6
 bar-used-empty = ─
 bar-used-empty-font = 6
 bar-used-empty-foreground = #444444
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
 
 [module/mpd]
 type = internal/mpd

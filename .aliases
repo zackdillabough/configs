@@ -5,7 +5,23 @@ alias colortest='~/.scripts/color-scripts/color-scripts/colortest'
 alias pac-color='~/.scripts/color-scripts/color-scripts/pacman'
 alias pipes='~/.scripts/color-scripts/color-scripts/pipes2'
 alias vim='nvim'
+
 # git alias for setup/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias qb='exec /usr/bin/qutebrowser'
+alias ssh='TERM=xterm-256color ssh'
+alias ls='exa --long  --git --classify --group-directories-first --color-scale --icons'
+alias ontop='almostontop_toggle'
+
+# vim luls
+alias :q='exit'
+alias :e='$EDITOR'
+
+function opdf () {
+    mupdf $1  &!
+}
+
+function mlab () {
+    matlab $1  &!
+}
