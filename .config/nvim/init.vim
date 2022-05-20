@@ -46,13 +46,13 @@ vnoremap <Leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
 
 " nvim lsp oriented settings
 
-" source ./plugins/sets.vim
-" source ./plugins/colors.vim
-" source ./plugins/nerdtree.vim
-" source ./plugins/nvimgdb.vim
-" source ./plugins/vimtex.vim
-" source ./plugins/completion.vim
-" source ./plugins/navigation.vim
+source ./plugin/sets.vim
+source ./plugin/colors.vim
+source ./plugin/nerdtree.vim
+source ./plugin/nvimgdb.vim
+source ./plugin/vimtex.vim
+source ./plugin/completion.vim
+source ./plugin/navigation.vim
 lua require('lsp_config')
 lua require('spacemacs_bar')
 
